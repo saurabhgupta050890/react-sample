@@ -10,6 +10,8 @@ class Header extends Component {
                 <Link to="/about"> About </Link>
                 { " | " }
                 <Link to="/topics"> Topics </Link>
+                { " | " }
+                <Link to="/regions"> Regions </Link>
             </nav>
         );
     }

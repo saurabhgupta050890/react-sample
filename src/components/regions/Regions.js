@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import {Link, Route} from 'react-router-dom';
+import Region from './Region';
 
 const regions = ['africa', 'americas', 'asia', 'europe', 'oceania'];
 
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
-
 class Regions extends Component {
-    constructor(data) {
-        super();
-        this.match = data.match;
+    constructor(props) {
+        super(props);
+        this.match = props.match;
     }
     render() {
         let regionButtons = regions.map((region, index) => 
@@ -21,7 +16,7 @@ class Regions extends Component {
             <div>
                 {regionButtons}
                 <hr />
-                <Route path={`${this.match.url}/:topicId`} component={Topic}/>
+                <Route path={`${this.match.url}/:regionId`} component={Region}/>
                 <Route exact path={this.match.url} render={() => (
                     <h3> Select a region to load Countries </h3>
                 )}/>
