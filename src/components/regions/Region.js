@@ -9,7 +9,7 @@ class Region extends Component {
         super(props);
         this.params = props.match.params;
         this.selectCountry = {};
-        this.state = {countries:[]};
+        this.state = {countries:[], selectedCountry:{}};
         this.loadCountryDetails = this.loadCountryDetails.bind(this);
     }
     componentDidMount() {
@@ -31,7 +31,7 @@ class Region extends Component {
         });
     }
     loadCountryDetails(country) {
-        this.selectCountry = country;
+        this.setState({selectedCountry:country});
     }
     render() {
         let countryList = this.state.countries.map((country) => 
@@ -45,7 +45,7 @@ class Region extends Component {
                     <aside className="menu"><ul className="menu-list"> {countryList} </ul> </aside>
                 </div>
                 <div className="column is-7">
-                    <Country country={this.selectCountry}></Country>
+                    <Country {...this.state.selectedCountry}></Country>
                 </div>
             </div>
         );
